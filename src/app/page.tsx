@@ -61,7 +61,18 @@ export default function Home() {
   }, [musicPlaying]);
 
   const toggleMusic = () => {
-    setMusicPlaying(!musicPlaying);
+    const nextState = !musicPlaying;
+    setMusicPlaying(nextState);
+    if (audioRef.current) {
+      if (nextState) {
+        audioRef.current.volume = 0.35;
+        audioRef.current.play().catch((err) => {
+          console.warn("Toggle play failed: ", err);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+    }
   };
 
   const handleAudioError = () => {
@@ -89,7 +100,15 @@ export default function Home() {
       {/* Cinematic Loading Overlay */}
       <CinematicLoader
         onComplete={() => setLoaded(true)}
-        onPlayMusic={() => setMusicPlaying(true)}
+        onPlayMusic={() => {
+          setMusicPlaying(true);
+          if (audioRef.current) {
+            audioRef.current.volume = 0.35;
+            audioRef.current.play().catch((err) => {
+              console.warn("Synchronous play failed: ", err);
+            });
+          }
+        }}
       />
 
       {/* Floating Music Control Coin */}
