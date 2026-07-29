@@ -48,7 +48,7 @@ export default function Home() {
     if (!audioRef.current) return;
     
     // Set background audio to play mildly
-    audioRef.current.volume = 0.10;
+    audioRef.current.volume = 0.35;
     
     if (musicPlaying) {
       audioRef.current.play().catch((err) => {
@@ -69,7 +69,7 @@ export default function Home() {
     if (audioRef.current) {
       console.log("Local audio not found, falling back to backup...");
       audioRef.current.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
-      audioRef.current.volume = 0.10;
+      audioRef.current.volume = 0.35;
       if (musicPlaying) {
         audioRef.current.play().catch(() => {});
       }
@@ -81,7 +81,7 @@ export default function Home() {
       {/* Audio Element */}
       <audio
         ref={audioRef}
-        src="/assets/audio/Kaadhal Kadhai.mp3"
+        src="/assets/audio/Kaadhal-Kadhai.mp3"
         loop
         onError={handleAudioError}
       />
