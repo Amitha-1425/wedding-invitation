@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: var(--font-cinzel), serif;
+  --font-cormorant: var(--font-cormorant), serif;
+  --font-noto-tamil: var(--font-noto-tamil), serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+
+  --color-ivory: #FAF8F5;
+  --color-cream: #F8F3E8;
+  --color-cream-deep: #EADCB9;
+  --color-gold: #C8A24C;
+  --color-gold-light: #E8CD8A;
+  --color-gold-deep: #9C7A2E;
+  --color-maroon: #7A1F2A;
+  --color-maroon-deep: #5A1620;
+  --color-brown: #2E1B12;
+  --color-pink-lotus: #E88FAE;
+  --color-green-emerald: #1F4D36;
+  --color-deepam-glow: #FFB25E;
+  
+  --animate-gold-pulse: goldPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(156, 122, 46, 0.4), inset 0 1px 0 rgba(255,255,255,0.4); }
+  50% { box-shadow: 0 8px 34px rgba(200, 162, 76, 0.7), inset 0 1px 0 rgba(255,255,255,0.7); }
+}
+
+:root {
+  --background: #F8F3E8;
+  --foreground: #2E1B12;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #2E1B12;
+}
+::-webkit-scrollbar-thumb {
+  background: #9C7A2E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A24C;
+}
+
+/* Smooth Scrolling Scroller Container */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Hide Next.js Dev / Turbopack Indicator & Dev Portal Overlay */
+next-route-announcer,
+#next-route-announcer,
+next-dev-indicator,
+[data-nextjs-dev-indicator],
+#next-dev-indicator,
+.next-dev-indicator,
+nextjs-portal {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
