@@ -7,30 +7,52 @@ export default function Blessings() {
   const parentGroups = [
     {
       title: "Groom's Family",
-      names: "Mr. N. Elangovan & Mrs. E. Selvamani",
+      names: "N. Elangovan & E. Selvamani",
       relation: "Father & Mother of Groom",
-      familyInfo: "With Love: Ms. E. Vijayapriya B.C.A. (Objectways Technologies)",
+      familyInfo: "With Love: Ms. E. Vijayapriya B.C.A.",
       blessing: "We welcome you all with warm hearts to celebrate the joining of our children in love, trust, and family values.",
       role: "MUTHUKUMAR'S FAMILY",
-      image: "/assets/images/groomfam.png"
+      image: "/assets/images/groomfams.jpeg",
+      imageAspect: "aspect-[3/4]",
+      imageWidth: "w-44",
+      imagePosition: "object-center"
     },
     {
       title: "Bride's Family",
-      names: "Mr. K. Anbalagan & Mrs. M. Maheswari",
+      names: "K. Anbalagan & M. Maheswari",
       relation: "Father & Mother of Bride",
-      familyInfo: "With Love: Er. R. Sathish M.E. & nephew M.S. Vikram",
+      familyInfo: "With Love: Midhuna, Sathish & nephew M.S. Vikram",
       blessing: "May Lord Murugan shower his infinite grace upon our children Naveen & Amitha as they begin this sacred journey of companionship.",
       role: "AMITHA'S FAMILY",
-      image: "/assets/images/bridefam.jpeg"
+      image: "/assets/images/bridefam.png",
+      imageAspect: "aspect-[3/4]",
+      imageWidth: "w-44",
+      imagePosition: "object-center",
+      objectFit: "object-cover"
+    },
+    {
+      title: "Sister of Groom",
+      names: "Ms. E. Vijayapriya B.C.A.",
+      relation: "Younger Sister of Groom",
+      familyInfo: "",
+      blessing: "Wishing my dearest brother Naveen and sister-in-law Amitha a lifetime of joy, endless love, and beautiful new beginnings together!",
+      role: "SISTER'S BLESSINGS",
+      image: "/assets/images/groomsister.jpeg",
+      imageAspect: "aspect-[3/4]",
+      imageWidth: "w-44",
+      imagePosition: "object-center"
     },
     {
       title: "Sister & Brother-in-Law",
-      names: "Er. A. Midhuna B.E. & Er. R. Sathish M.E.",
+      names: "A. Midhuna & R. Sathish",
       relation: "Sister & Brother-in-Law of Bride",
       familyInfo: "With Love: Nephew M.S. Vikram",
       blessing: "Wishing our dearest sister Amitha and brother-in-law Naveen a lifetime of happiness, shared laughter, and beautiful memories. So happy for you both!",
       role: "SISTER & BROTHER-IN-LAW'S BLESSINGS",
-      image: "/assets/images/sister.png"
+      image: "/assets/images/sister.png",
+      imageAspect: "aspect-[3/4]",
+      imageWidth: "w-44",
+      imagePosition: "object-center"
     }
   ];
 
@@ -39,7 +61,7 @@ export default function Blessings() {
       {/* Background radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,162,76,0.03)_0%,rgba(0,0,0,0)_75%)] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
         
         {/* Title */}
         <div className="mb-16 select-none">
@@ -53,7 +75,7 @@ export default function Blessings() {
         </div>
 
         {/* Blessings Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 w-full px-4 justify-items-center relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-10 w-full px-4 justify-items-center relative z-10">
           {parentGroups.map((group, idx) => (
             <motion.div
               key={idx}
@@ -87,12 +109,12 @@ export default function Blessings() {
 
                 {/* Parent Image Frame */}
                 {group.image ? (
-                  <div className="w-44 aspect-[3/4] rounded-md overflow-hidden border border-gold-deep/40 p-1 bg-[#FFFDF9] relative shadow-md mb-4 mt-2">
+                  <div className={`rounded-md overflow-hidden border border-gold-deep/40 p-1 bg-[#FFFDF9] relative shadow-md mb-4 mt-2 ${group.imageAspect || "aspect-[3/4]"} ${group.imageWidth || "w-44"}`}>
                     <div className="absolute inset-0.5 border border-gold-deep/10 pointer-events-none" />
                     <img 
                       src={group.image} 
                       alt={group.names} 
-                      className="w-full h-full object-cover rounded-sm" 
+                      className={`w-full h-full ${group.objectFit || "object-cover"} rounded-sm ${group.imagePosition || "object-center"}`} 
                     />
                   </div>
                 ) : (
@@ -103,9 +125,11 @@ export default function Blessings() {
                   </div>
                 )}
 
-                <p className="text-[10px] text-brown/70 font-poppins mb-6 italic leading-relaxed max-w-[280px]">
-                  {group.familyInfo}
-                </p>
+                {group.familyInfo && (
+                  <p className="text-[10px] text-brown/70 font-poppins mb-6 italic leading-relaxed max-w-[280px]">
+                    {group.familyInfo}
+                  </p>
+                )}
 
                 <div className="h-[1px] w-16 bg-gold-deep/20 mb-6" />
 

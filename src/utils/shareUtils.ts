@@ -86,8 +86,8 @@ export async function generateInvitationCardCanvas(): Promise<HTMLCanvasElement>
   // Parent line
   ctx.fillStyle = "#2E1B12";
   ctx.font = "italic 16px Georgia, serif";
-  ctx.fillText("Son of Mr. N. Elangovan & Mrs. E. Selvamani", canvas.width / 2, 605);
-  ctx.fillText("Daughter of Mr. K. Anbalagan & Mrs. M. Maheswari", canvas.width / 2, 640);
+  ctx.fillText("Son of N. Elangovan & E. Selvamani", canvas.width / 2, 605);
+  ctx.fillText("Daughter of K. Anbalagan & M. Maheswari", canvas.width / 2, 640);
 
   // Elegant divider line
   ctx.lineWidth = 1;
@@ -126,7 +126,7 @@ export async function generateInvitationCardCanvas(): Promise<HTMLCanvasElement>
   
   ctx.fillStyle = "#2E1B12";
   ctx.font = "bold 20px Georgia, serif";
-  ctx.fillText("VKT Mahal, Rayanoor, Karur", canvas.width / 2, 1045);
+  ctx.fillText("VKT Mahal, Thanthoni, Karur", canvas.width / 2, 1045);
 
   // Floral Motif bottom
   ctx.fillStyle = "#9C7A2E";

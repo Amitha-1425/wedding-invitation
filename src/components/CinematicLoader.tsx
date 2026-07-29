@@ -37,51 +37,8 @@ export default function CinematicLoader({ onComplete, onPlayMusic }: CinematicLo
     };
   }, []);
 
-  // Web Audio API Temple Bell Sound Synthesis
-  const playBellChime = () => {
-    const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioContext) return;
-    try {
-      const ctx = new AudioContext();
-      const now = ctx.currentTime;
-      
-      // Inharmonic bell partials
-      const partials = [
-        { f: 160, g: 0.5, d: 3.5 },
-        { f: 240, g: 0.4, d: 3.0 },
-        { f: 310, g: 0.3, d: 2.5 },
-        { f: 415, g: 0.25, d: 2.0 },
-        { f: 555, g: 0.2, d: 1.5 },
-        { f: 670, g: 0.15, d: 1.2 },
-        { f: 830, g: 0.1, d: 0.8 },
-      ];
-
-      partials.forEach((p) => {
-        const osc = ctx.createOscillator();
-        const gainNode = ctx.createGain();
-        
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(p.f, now);
-        
-        // Bell envelope
-        gainNode.gain.setValueAtTime(0.0001, now);
-        gainNode.gain.linearRampToValueAtTime(p.g, now + 0.01);
-        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + p.d);
-        
-        osc.connect(gainNode);
-        gainNode.connect(ctx.destination);
-        
-        osc.start(now);
-        osc.stop(now + p.d);
-      });
-    } catch (e) {
-      console.warn("AudioContext failed: ", e);
-    }
-  };
-
   const handleOpenInvitation = () => {
     setStage("opening");
-    playBellChime();
     onPlayMusic(); // Fade in Nadaswaram
 
     // Delay calling onComplete until curtain slides fully open (1.2s)
@@ -177,7 +134,7 @@ export default function CinematicLoader({ onComplete, onPlayMusic }: CinematicLo
             </div>
             <div className="w-full flex justify-between items-center opacity-40 border-b border-gold-light/20 pb-4 z-20">
               <div className="h-[2px] w-20 bg-gold-light/20" />
-              <span className="text-gold-light font-cinzel text-xs tracking-[0.2em] font-bold">WELCOME</span>
+              <span className="text-gold-light font-cinzel text-xs tracking-[0.2em] font-bold">✧</span>
               <div className="h-[2px] w-20 bg-gold-light/20" />
             </div>
           </motion.div>

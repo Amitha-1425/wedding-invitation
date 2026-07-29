@@ -62,7 +62,7 @@ export default function Venue() {
                     <div>
                       <h3 className="font-cinzel text-lg text-maroon font-bold tracking-wide">VKT Mahal</h3>
                       <p className="text-xs text-brown/80 mt-1 font-poppins leading-relaxed">
-                        Rayanoor, Karur, <br />
+                        Thanthoni, Karur, <br />
                         Tamil Nadu - 639005
                       </p>
                     </div>
@@ -84,7 +84,7 @@ export default function Venue() {
 
                 <div className="mt-8">
                   <a
-                    href="https://maps.google.com/?q=VKT+Mahal+Rayanoor+Karur"
+                    href="https://maps.app.goo.gl/j39odsc2tFa9khJ18"
                     target="_blank"
                     rel="noreferrer"
                     className="cursor-pointer inline-flex items-center justify-center gap-2 bg-gradient-to-r from-gold-deep via-gold to-gold-deep text-white font-cinzel font-bold text-xs tracking-wider px-6 py-3.5 rounded-full hover:shadow-[0_6px_20px_rgba(200,162,76,0.3)] transition-all w-full select-none"
@@ -98,7 +98,7 @@ export default function Venue() {
               {/* Right: Embedded Google Map (lg:col-span-7) */}
               <div className="lg:col-span-7 w-full h-[240px] md:h-[300px] lg:h-[350px] rounded-xl overflow-hidden border border-gold-deep/15 relative">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.423984183404!2d78.05389657591605!3d10.959954757731735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2faf66ab9ecf%3A0xe5a3637e69f8c6eb!2sVKT%20MAHAL!5e0!3m2!1sen!2sin!4v1722216503927!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.423984183404!2d78.0860083!3d10.9360899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fd46ae83edb%3A0x20a8b36428d5b79c!2sVKT+mahal!5e0!3m2!1sen!2sin!4v1722216503927!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

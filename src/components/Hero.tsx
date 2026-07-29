@@ -127,34 +127,6 @@ export default function Hero({ isTriggered }: HeroProps) {
         style={{ y: contentY }}
         className="w-full max-w-2xl flex flex-col items-center justify-center z-[3] px-6 relative mt-6"
       >
-        {/* Slow Rotating Gold Mandala in Background */}
-        <motion.div
-          className="absolute w-[360px] h-[360px] md:w-[500px] md:h-[500px] pointer-events-none opacity-[0.12] z-[1] select-none text-gold-deep flex items-center justify-center"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-        >
-          <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="0.6">
-            <circle cx="50" cy="50" r="46" strokeDasharray="3, 3" />
-            <circle cx="50" cy="50" r="36" />
-            <circle cx="50" cy="50" r="26" strokeDasharray="1, 1" />
-            <circle cx="50" cy="50" r="16" />
-            {[...Array(24)].map((_, i) => {
-              const angle = (i * 360) / 24;
-              const rad = (angle * Math.PI) / 180;
-              return (
-                <line
-                  key={i}
-                  x1={50 + 16 * Math.cos(rad)}
-                  y1={50 + 16 * Math.sin(rad)}
-                  x2={50 + 46 * Math.cos(rad)}
-                  y2={50 + 46 * Math.sin(rad)}
-                  opacity="0.4"
-                />
-              );
-            })}
-            <path d="M 50 14 A 36 36 0 1 1 49.9 14 Z" />
-          </svg>
-        </motion.div>
 
         {/* Large Premium Arch Framed Couple Photo */}
         <motion.div

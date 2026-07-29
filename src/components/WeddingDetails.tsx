@@ -108,7 +108,7 @@ export default function WeddingDetails() {
                   <div>
                     <span className="text-[8px] font-cinzel tracking-widest text-gold-deep block font-bold">VENUE</span>
                     <span className="font-poppins text-[10px] md:text-xs font-semibold text-brown">
-                      VKT Mahal, Rayanoor, Karur, TN
+                      VKT Mahal, Thanthoni, Karur, TN
                     </span>
                   </div>
                 </div>

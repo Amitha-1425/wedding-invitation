@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
 
 interface TimeLeft {
   days: number;
@@ -14,38 +13,6 @@ export default function CircularCountdown() {
   const targetDate = new Date("2026-08-31T07:00:00+05:30").getTime();
   
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [bellTrigger, setBellTrigger] = useState(false);
-  const prevMinRef = useRef<number | null>(null);
-
-  // Synthesize soft bell sound
-  const playSoftBell = () => {
-    const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioContext) return;
-    try {
-      const ctx = new AudioContext();
-      const now = ctx.currentTime;
-      
-      const freqs = [350, 520, 700, 880];
-      const gains = [0.4, 0.25, 0.15, 0.05];
-
-      freqs.forEach((f, i) => {
-        const osc = ctx.createOscillator();
-        const gainNode = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(f, now);
-        
-        gainNode.gain.setValueAtTime(gains[i], now);
-        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 2.0);
-        
-        osc.connect(gainNode);
-        gainNode.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 2.0);
-      });
-    } catch (e) {
-      console.warn("Bell sound failed", e);
-    }
-  };
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -63,14 +30,6 @@ export default function CircularCountdown() {
       const seconds = Math.floor((diff / 1000) % 60);
 
       setTimeLeft({ days, hours, minutes, seconds });
-
-      // Trigger bell chime and swing when minute changes
-      if (prevMinRef.current !== null && prevMinRef.current !== minutes) {
-        setBellTrigger(true);
-        playSoftBell();
-        setTimeout(() => setBellTrigger(false), 3000);
-      }
-      prevMinRef.current = minutes;
     };
 
     updateCountdown();
@@ -144,33 +103,6 @@ export default function CircularCountdown() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,162,76,0.02)_0%,rgba(0,0,0,0)_75%)] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        {/* Swaying Temple Bell in center */}
-        <div className="mb-8">
-          <motion.div
-            animate={bellTrigger ? { rotate: [-15, 15, -10, 10, -5, 5, 0] } : {}}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
-            className="w-16 h-16 origin-top cursor-pointer flex justify-center items-center"
-            onClick={() => {
-              setBellTrigger(true);
-              playSoftBell();
-              setTimeout(() => setBellTrigger(false), 2500);
-            }}
-          >
-            <svg viewBox="0 0 100 120" className="w-12 h-auto text-gold-deep fill-current filter drop-shadow-[0_4px_8px_rgba(200,162,76,0.25)]">
-              <path d="M50 10 C42 10 37 20 37 30 L63 30 C63 20 58 10 50 10 Z" fill="url(#goldGrad)" />
-              <path d="M37 30 C37 50 25 75 25 90 L75 90 C75 50 63 30 63 30 Z" fill="url(#goldGrad)" />
-              <rect x="20" y="90" width="60" height="10" rx="5" fill="url(#goldGrad)" />
-              <circle cx="50" cy="110" r="6" fill="#9C7A2E" />
-              <line x1="50" y1="100" x2="50" y2="110" stroke="#5A1620" strokeWidth="3" />
-            </svg>
-          </motion.div>
-          {bellTrigger && (
-            <p className="text-[10px] font-cinzel text-gold-deep tracking-widest mt-2 animate-pulse font-bold">
-              🔔 Muhurtham Bell Tolls!
-            </p>
-          )}
-        </div>
-
         {/* Title */}
         <div className="mb-12">
           <span className="text-[10px] tracking-[0.35em] text-gold-deep font-cinzel block mb-2 font-bold">

@@ -34,6 +34,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "முத்துக்குமார் & அமிதா | Muthukumar & Amitha — Royal Wedding Invitation",
   description: "You are lovingly invited to the royal wedding of Muthukumar (Naveen) & Amitha — Monday, 31 August 2026, VKT Mahal, Karur, Tamil Nadu.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

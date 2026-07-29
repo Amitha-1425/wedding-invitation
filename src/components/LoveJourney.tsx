@@ -59,7 +59,7 @@ export default function LoveJourney() {
               </div>
               <div className="flex items-center gap-3 text-xs">
                 <MapPin className="w-4 h-4 text-gold-deep" />
-                <span>VKT Mahal, Rayanoor, Karur</span>
+                <span>VKT Mahal, Thanthoni, Karur</span>
               </div>
             </div>
             
@@ -138,7 +138,7 @@ export default function LoveJourney() {
               </div>
               <div className="flex items-center gap-3 text-xs">
                 <MapPin className="w-4 h-4 text-gold-deep" />
-                <span>VKT Mahal, Rayanoor, Karur</span>
+                <span>VKT Mahal, Thanthoni, Karur</span>
               </div>
             </div>
 
